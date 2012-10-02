@@ -1,0 +1,19 @@
+{
+  "author": "ka2er <personseb+npm@gmail.com>",
+  "name": "opensubtitles-api",
+  "description": "API to interact with opensubtitles services",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ka2er/node-opensubtitles-api.git"
+  },
+  "main": "lib/opensubtitles.js",
+  "dependencies": {
+    "xmlrpc":"1.0.2"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
