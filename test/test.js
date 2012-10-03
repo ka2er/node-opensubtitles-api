@@ -9,6 +9,7 @@ var assert = require("assert");
 	OS = require("../lib/opensubtitles.js");
 
 describe('Opensubtitles', function() {
+
 	describe('#computeHash()', function(){
 
 		it('should return a opensubtitles hash of the movie file ', function(done){
@@ -20,5 +21,30 @@ describe('Opensubtitles', function() {
 			});
 		});
 	});
+
+	describe('#padLeft', function() {
+		it('should left pad a string as occurence of max char', function() {
+
+			var os = new OS();
+			assert.equal(os.padLeft("123456", 0, 10), "0000123456");
+			assert.equal(os.padLeft("123456", "0", 10), "0000123456");
+		});
+	});
+
+	describe('#sumHex64Bits', function() {
+		it('should add 64 bits hex string', function() {
+			var os = new OS();
+			assert.equal(
+				os.sumHex64bits(
+					"3a3e2a2340",
+					"4d6b464332"
+					),
+				"87a9706672"
+			);
+			//assert.equal(os.padLeft("123456", "0", 10), "0000123456");
+		});
+	});
+
+
 });
 
