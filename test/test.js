@@ -80,5 +80,17 @@ describe('Opensubtitles', function() {
 			);
 		});
 	});
+
+	describe('#checkMovieHash', function() {
+		it('should identify breakdance', function(done) {
+			var os = new OS();
+			assert.equal(
+				os.checkMovieHash(['8e245d9679d31e12'], function(err, res) {
+					if(err) return done(err);
+					//done('-1');
+				})
+			);
+		});
+	});
 });
 
