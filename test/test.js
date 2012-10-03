@@ -21,7 +21,7 @@ describe('Opensubtitles', function() {
 			});
 		});
 
-/*
+
 		it('should return a 64bits length opensubtitles hash of the movie file ', function(done){
 			var os = new OS();
 			os.computeHash(process.cwd()+'/test/breakdance.avi', function(err, size){
@@ -30,9 +30,9 @@ describe('Opensubtitles', function() {
 				done();
 			});
 		});
-*/
+
 	});
-/*
+
 	describe('#padLeft', function() {
 		it('should left pad a string as occurence of max char', function() {
 
@@ -80,7 +80,5 @@ describe('Opensubtitles', function() {
 			);
 		});
 	});
-
-	*/
 });
 
