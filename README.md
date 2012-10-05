@@ -30,4 +30,10 @@ Tests
 -----
 
 simply run :
-	mocha
+
+	$ mocha
+
+About
+-----
+
+<a href='http://www.opensubtitles.org/'>Subtitles service powered by www.OpenSubtitles.org <img src='http://static.opensubtitles.org/gfx/logo-transparent.png' /></a>
