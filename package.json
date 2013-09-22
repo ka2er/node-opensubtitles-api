@@ -2,27 +2,33 @@
   "author": "ka2er <personseb+npm@gmail.com>",
   "name": "opensubtitles",
   "description": "API to interact with opensubtitles services",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/ka2er/node-opensubtitles-api.git"
   },
   "scripts": {
     "test": "mocha"
-  },  "main": "lib/opensubtitles.js",
+  },
+  "main": "lib/opensubtitles.js",
   "dependencies": {
-    "xmlrpc":"1.0.2"
+    "xmlrpc": "1.0.2"
   },
   "devDependencies": {
-    "mocha":"1.6.0"
+    "mocha": "1.6.0"
   },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
   },
   "keywords": [
-    "opensubtitles",
-    "imdb"
+    "opensubtitles"
   ],
-  "license": "GPL"
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/ka2er/node-opensubtitles-api/issues"
+  },
+  "directories": {
+    "test": "test"
+  }
 }

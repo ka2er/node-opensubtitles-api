@@ -82,12 +82,13 @@ describe('Opensubtitles', function() {
 	});
 
 	describe('#checkMovieHash', function() {
-		it('should identify breakdance', function(done) {
+		it('should identify Mar adentro', function(done) {
 			var os = new OS();
 			assert.equal(
 				os.checkMovieHash(['8e245d9679d31e12'], function(err, res) {
 					if(err) return done(err);
-					//done('-1');
+					assert.equal(res.data['8e245d9679d31e12'].MovieName, "Mar adentro");
+					done();
 				})
 			);
 		});
