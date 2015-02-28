@@ -82,12 +82,12 @@ describe('Opensubtitles', function() {
 	});
 
 	describe('#checkMovieHash', function() {
-		it('should identify Mar adentro', function(done) {
+		it('should identify Iron Man', function(done) {
 			var os = new OS();
 			assert.equal(
-				os.checkMovieHash(['8e245d9679d31e12'], function(err, res) {
+				os.checkMovieHash(['d7aa0275cace4410'], function(err, res) {
 					if(err) return done(err);
-					assert.equal(res.data['8e245d9679d31e12'].MovieName, "Mar adentro");
+					assert.equal(res.data['d7aa0275cace4410'].MovieName, "Iron Man");
 					done();
 				})
 			);
