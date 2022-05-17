@@ -2,7 +2,7 @@
   "author": "ka2er <personseb+npm@gmail.com>",
   "name": "opensubtitles",
   "description": "API to interact with opensubtitles services",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/ka2er/node-opensubtitles-api.git"
