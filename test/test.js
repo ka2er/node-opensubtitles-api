@@ -84,13 +84,11 @@ describe('Opensubtitles', function() {
 	describe('#checkMovieHash', function() {
 		it('should identify Iron Man', function(done) {
 			var os = new OS();
-			assert.equal(
-				os.checkMovieHash(['d7aa0275cace4410'], function(err, res) {
-					if(err) return done(err);
-					assert.equal(res.data['d7aa0275cace4410'].MovieName, "Iron Man");
-					done();
-				})
-			);
+			os.checkMovieHash(['d7aa0275cace4410'], function(err, res) {
+				if(err) return done(err);
+				assert.equal(res.data['d7aa0275cace4410'].MovieName, "Iron Man");
+				done();
+			})
 		});
 	});
 });
