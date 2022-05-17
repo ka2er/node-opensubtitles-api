@@ -46,7 +46,7 @@ describe('Opensubtitles', function() {
 		it('should read 64 bits Little indian order from buffer ', function() {
 
 			var os = new OS();
-			var buf = new Buffer([
+			var buf = Buffer.from([
 				0x00, 0x11, 0x22, 0x33, 0X44, 0x55, 0x66, 0x77
 			]);
 
