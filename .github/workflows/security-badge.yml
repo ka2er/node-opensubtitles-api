@@ -47,8 +47,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git ls-remote --exit-code --heads origin badges >/dev/null 2>&1; then
             git fetch --depth=1 origin +refs/heads/badges:refs/remotes/origin/badges
+            rm -f security.json
             git checkout -B badges origin/badges
           else
+            rm -f security.json
             git switch --orphan badges
           fi
           cp /tmp/security.json security.json
