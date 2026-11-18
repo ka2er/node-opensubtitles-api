@@ -3,7 +3,8 @@ node-opensubtitles-api
 
 Node.js API library to query opensubtitles.org
 
-![build status](https://travis-ci.org/ka2er/node-opensubtitles-api.svg?branch=master)
+[![Test status](https://github.com/ka2er/node-opensubtitles-api/actions/workflows/test.yml/badge.svg)](https://github.com/ka2er/node-opensubtitles-api/actions/workflows/test.yml)
+[![npm version](https://img.shields.io/npm/v/opensubtitles.svg)](https://www.npmjs.com/package/opensubtitles)
 
 Usage
 -----
