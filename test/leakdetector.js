@@ -1,4 +1,7 @@
-var heapdump = require("heapdump");
+// Heap snapshots: this script needs the `heapdump` package (npm i heapdump) or,
+// on modern Node, run it with `node --heapsnapshot-signal=SIGUSR2` and send SIGUSR2.
+var heapdump = null;
+try { heapdump = require("heapdump"); } catch (e) { /* handled in writeSnapshot */ }
 
 var OS = require("../lib/opensubtitles.js");
 var os = new OS();
@@ -26,7 +29,11 @@ function computeHashUntilLimit() {
 }
 
 function writeSnapshot() {
-  heapdump.writeSnapshot(__dirname + '/' + Date.now() + '.heapsnapshot');
+  if (heapdump) {
+    heapdump.writeSnapshot(__dirname + '/' + Date.now() + '.heapsnapshot');
+  } else {
+    console.error("heapdump not installed; use `node --heapsnapshot-signal=SIGUSR2` and send SIGUSR2 instead");
+  }
 }
 
 
