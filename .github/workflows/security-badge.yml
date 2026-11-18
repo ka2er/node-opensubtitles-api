@@ -53,5 +53,9 @@ jobs:
           fi
           cp /tmp/security.json security.json
           git add security.json
-          git commit -m "update security badge [skip ci]"
-          git push -u origin badges
+          if git diff --cached --quiet; then
+            echo "security.json unchanged; nothing to publish"
+          else
+            git commit -m "update security badge [skip ci]"
+            git push -u origin badges
+          fi
