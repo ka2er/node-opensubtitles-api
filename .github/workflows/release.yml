@@ -12,13 +12,15 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    environment: npm
     permissions:
       contents: write
+      id-token: write # required for npm trusted publishing (OIDC)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24 # ships npm 11.x, required for OIDC trusted publishing
           registry-url: https://registry.npmjs.org
       - run: npm ci
       - run: npm test
@@ -28,7 +30,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           npm version ${{ inputs.bump }}
           git push --follow-tags origin "${{ github.ref_name }}"
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm (trusted publishing, no token)
+        run: npm publish --provenance --access public
