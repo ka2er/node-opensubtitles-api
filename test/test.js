@@ -82,7 +82,11 @@ describe('Opensubtitles', function() {
 	});
 
 	describe('#checkMovieHash', function() {
-		it('should identify Iron Man', function(done) {
+		// Live-API test: requires a reachable opensubtitles.org endpoint with the
+		// legacy XML-RPC response shape. Skipped by default so CI is deterministic;
+		// opt in locally with LIVE_API=1 npm test.
+		var itLive = process.env.LIVE_API ? it : it.skip;
+		itLive('should identify Iron Man', function(done) {
 			var os = new OS();
 			os.checkMovieHash(['d7aa0275cace4410'], function(err, res) {
 				if(err) return done(err);
