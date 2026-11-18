@@ -1,0 +1,57 @@
+name: Security badge
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Audit production dependencies
+        run: |
+          set +e
+          npm audit --omit=dev --json > audit.json
+          echo "npm audit exit: $?"
+      - name: Build badge JSON
+        run: |
+          node -e "
+            const a = require('./audit.json');
+            const v = (a.metadata && a.metadata.vulnerabilities) || {};
+            const total = ['info','low','moderate','high','critical'].reduce((s,k)=>s+(v[k]||0),0);
+            const color = total === 0 ? 'brightgreen' : (total <= 4 ? 'yellow' : 'red');
+            require('fs').writeFileSync('security.json', JSON.stringify({
+              schemaVersion: 1,
+              label: 'vulnerabilities (prod)',
+              message: String(total),
+              color: color
+            }));
+          "
+          cat security.json
+      - name: Publish to badges branch
+        run: |
+          cp security.json /tmp/security.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin badges >/dev/null 2>&1; then
+            git fetch origin badges
+            git checkout badges
+          else
+            git switch --orphan badges
+          fi
+          cp /tmp/security.json security.json
+          git add security.json
+          git commit -m "update security badge [skip ci]"
+          git push -u origin badges
